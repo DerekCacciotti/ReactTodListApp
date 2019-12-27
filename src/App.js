@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css'
 import Todo from './components/Todo'
 import Header from './components/layout/Header';
@@ -62,10 +63,13 @@ class App extends Component{
         render()
   {
   
-    return (<div className="App">
+    return (
+    <Router>
+    <div className="App">
       <div className="container">
 
       <Header></Header>
+      <Route path="/" render={props => }></Route>
        <AddTodo addTodo={this.addTodo}></AddTodo>
         <Todo todos={this.state.todos} 
         markComplete={this.markComplete} 
@@ -74,6 +78,7 @@ class App extends Component{
       </div>
        
        </div>
+       </Router>
     )
   }
   }
