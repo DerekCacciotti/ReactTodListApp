@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css'
 import Todo from './components/Todo'
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo'
 import { render } from '@testing-library/react';
 import uuid from 'uuid'
+import About from './components/pages/About'
 
 class App extends Component{
   state = {
@@ -62,18 +64,28 @@ class App extends Component{
         render()
   {
   
-    return (<div className="App">
+    return (
+    <Router>
+    <div className="App">
       <div className="container">
 
       <Header></Header>
-       <AddTodo addTodo={this.addTodo}></AddTodo>
+      <Route exact path="/">
+
+      <AddTodo addTodo={this.addTodo}></AddTodo>
         <Todo todos={this.state.todos} 
         markComplete={this.markComplete} 
         deltodo={this.deltodo}></Todo>
+        
+      </Route>
+       
 
       </div>
+
+      <Route path="/about" component={About}></Route>
        
        </div>
+       </Router>
     )
   }
   }
