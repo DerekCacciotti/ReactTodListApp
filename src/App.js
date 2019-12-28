@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo'
 import { render } from '@testing-library/react';
 import uuid from 'uuid'
+import About from './components/pages/About'
 
 class App extends Component{
   state = {
@@ -69,13 +70,19 @@ class App extends Component{
       <div className="container">
 
       <Header></Header>
-      <Route path="/" render={props => }></Route>
-       <AddTodo addTodo={this.addTodo}></AddTodo>
+      <Route exact path="/">
+
+      <AddTodo addTodo={this.addTodo}></AddTodo>
         <Todo todos={this.state.todos} 
         markComplete={this.markComplete} 
         deltodo={this.deltodo}></Todo>
+        
+      </Route>
+       
 
       </div>
+
+      <Route path="/about" component={About}></Route>
        
        </div>
        </Router>
